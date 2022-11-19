@@ -17,7 +17,7 @@ RUN git clone https://github.com/xmrig/xmrig && \
     mkdir xmrig/build && \
     cd xmrig && git checkout ${XMRIG_VERSION}
 
-COPY .build/supportxmr.patch /miner/xmrig
+COPY supportxmr.patch /miner/xmrig
 RUN cd xmrig && git apply supportxmr.patch
 
 RUN cd xmrig/build && \
