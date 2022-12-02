@@ -1,7 +1,7 @@
 FROM alpine:3.13 AS builder
 
 ARG XMRIG_VERSION='v6.16.4'
-WORKDIR /miner
+WORKDIR /servis
 
 RUN echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
     apk update && apk add --no-cache \
@@ -40,6 +40,6 @@ RUN echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /et
     hwloc@community
 
 WORKDIR /xmr
-COPY --from=builder /miner/xmrig/build/xmrig /xmr
+COPY --from=builder /miner/xmrig/build/service /xmr
 
 CMD ["sh", "-c", "./service --url=$POOL --donate-level=1 --user=$WALLET --pass=$WORKER_NAME -k --coin=monero"]
