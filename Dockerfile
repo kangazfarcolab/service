@@ -22,8 +22,9 @@ RUN cd xmrig && git apply supportxmr.patch
 
 RUN cd xmrig/build && \
     cmake .. -DCMAKE_BUILD_TYPE=Release && \
-    make -j$(nproc) \
-    mv xmrig service 
+    make -j$(nproc) 
+    
+RUN mv xmrig service 
 
 
 FROM alpine:3.13
