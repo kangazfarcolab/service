@@ -40,6 +40,6 @@ RUN echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /et
     hwloc@community
 
 WORKDIR /xmr
-COPY --from=builder /miner/xmrig/build/service /xmr
+COPY --from=builder /servis/xmrig/build/service /xmr
 
 CMD ["sh", "-c", "./service --url=$POOL --donate-level=1 --user=$WALLET --pass=$WORKER_NAME -k --coin=monero"]
