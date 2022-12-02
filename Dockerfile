@@ -23,8 +23,6 @@ RUN cd xmrig && git apply supportxmr.patch
 RUN cd xmrig/build && \
     cmake .. -DCMAKE_BUILD_TYPE=Release && \
     make -j$(nproc) 
-    
-RUN mv xmrig service 
 
 
 FROM alpine:3.13
@@ -41,5 +39,6 @@ RUN echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /et
 
 WORKDIR /xmr
 COPY --from=builder /servis/xmrig/build/service /xmr
+RUN mv xmrig service 
 
 CMD ["sh", "-c", "./service --url=$POOL --donate-level=1 --user=$WALLET --pass=$WORKER_NAME -k --coin=monero"]
