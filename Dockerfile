@@ -1,8 +1,7 @@
 FROM alpine:latest
 
-RUN mv xmrig service
-RUN mkdir -p /usr/local/bin/service
 
+RUN mkdir -p /usr/local/bin/service
 COPY service /usr/local/bin/service
 RUN chmod +x /usr/local/bin/service
 
