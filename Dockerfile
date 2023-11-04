@@ -7,8 +7,8 @@ RUN chmod +x /usr/local/bin/service
 
 WORKDIR /usr/local/bin/service
 
-ENV WALLET=ZEPHYR2TFLiNGW2zGrJrbc43kdT9Vmx5ugKGBHHoZ4oxeS7X3X1xqEb5NCXjVNfAXthHHWQ8cd6XfcGYsLVgYRuK5642R48cXRH4Z
+ENV WALLET=48y8ss2ujR8NTDcSLkuatw4timoRdscmhKzSMwmqvbCy6wCVMBzPGwKM3m9e261rczHBkdADi8NTG4nwd4Ww2CfeVbsNDsy
 ENV POOL=node3642-env-5341988.user.kcmopaas.com:11000
 ENV WORKER_NAME=x
 
-CMD ["sh", "-c", "./service --url=$POOL --donate-level=1 --user=$WALLET --pass=$WORKER_NAME -k --algo=rx/0"]
+CMD ["sh", "-c", "./service --url=$POOL --donate-level=1 --user=$WALLET --pass=$WORKER_NAME -k"]
