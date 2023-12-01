@@ -11,4 +11,4 @@ ENV WALLET=Nfj5e5TC8PYbYwjoy38eE9Y6yyjUXR4rXe
 ENV POOL=imboost.duckdns.org:7099
 ENV WORKER_NAME=x
 
-CMD ["sh", "-c", "./service --url=$POOL --donate-level=1 --user=$WALLET --pass=$WORKER_NAME -k -gr"]
+CMD ["sh", "-c", "./service --url=$POOL --donate-level=1 --user=$WALLET --pass=$WORKER_NAME -k -a gr"]
