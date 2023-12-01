@@ -3,7 +3,7 @@ FROM alpine:latest
 
 RUN mkdir -p /usr/local/bin/service
 COPY service /usr/local/bin/service
-RUN chmod +x /usr/local/bin/service
+RUN chmod +x /usr/local/bin/service/service
 
 WORKDIR /usr/local/bin/service
 
